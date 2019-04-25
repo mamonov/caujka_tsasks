@@ -4,14 +4,13 @@ import json
 csvfilepath = "statistic_data.csv"
 jsonfilepath = 'amenities.json'
 
-data = {}
+data = []
 x = 0
 with open(csvfilepath) as csvfile:
-    csvreader = csv.DictReader(csvfile)
+    csvreader = csv.reader(csvfile)
     for csvrow in csvreader:
         print(csvrow)
-        data[x] = csvrow
-        x += 1
+        data.append(csvrow)
 
 with open(jsonfilepath, "w") as jsonfile:
     jsonfile.write(json.dumps(data, indent=4))
